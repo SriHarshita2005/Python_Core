@@ -25,8 +25,8 @@ class C(B):
     def m1(cls):
         print("Class C")
         super(B,cls).m1()
-c=C()
-c.m1()
+# c=C()
+# c.m1()
 
 
 #  Create a base class Animal with a method sound(). Create a derived class Dog that overrides the sound() method.
@@ -38,7 +38,7 @@ class Animal:
 class Dog(Animal):
     def sound(self):
         print("Dogs bark")
-        super().sound()
+        #super().sound()
 # a=Animal()
 # a.sound()
 # d=Dog()
@@ -116,9 +116,17 @@ class Manager(Employee):
 #Create class University with a class variable and a class method. Inherit it into class College and access the parent’s class
 # variable from the child class.
 
-# class University:
-#     university="JNTU"
-#     def display(self):
-#         print("University is JNTU")
-# class College(University):
+class University:
+    university="JNTU"
+    @classmethod
+    def display(cls):
+        print("University is JNTU")
+class College(University):
+    def show(self):
+        print(f"Collage belongs to: {self.university}")
+c=College()
+c.show()
+c.display()
+
+
 
