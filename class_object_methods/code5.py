@@ -9,13 +9,11 @@ class Temperature:
         self.celcius=celcius
     @staticmethod
     def to_fahrenheit(celcius):
-        return (celcius*9/5)+32
-
+        fahrenheit=(celcius*9/5)+32
+        return fahrenheit
     def show_conversion(self):
-        print("celcius",self.celcius)
+        print(f"Celcius :{self.celcius}")
         f=Temperature.to_fahrenheit(self.celcius)
-        print("fahrenheit",f)
-
-
+        print(f"Fahrenheit: {f}")
 obj=Temperature(32)
 obj.show_conversion()

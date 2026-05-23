@@ -10,6 +10,9 @@ class Employee:
     def change_company(cls,new_name):
         cls.company_name=new_name
 e1=Employee("Harshita")
-print(e1.company_name,e1.name)
-Employee.change_company("CVCORP")
-print(e1.name,e1.company_name)
+e2=Employee("Ravi")
+for e in [e1,e2]:
+    print(f"{e1.company_name},{e.name}")
+Employee.company_name="CVCORP"
+for e in [e1,e2]:
+    print(f"{e1.company_name},{e.name}")

@@ -7,19 +7,19 @@
 #
 class Car:
     wheels=4
-    def __index__(self,mileage):
+    def __init__(self,mileage):
         self.mileage=mileage
     def display_specs(self):
-        print(f"Mileage{self.mileage},Wheels{Car.wheels}")
+        print(f"Mileage:{self.mileage} , Wheels:{Car.wheels}")
     @classmethod
     def change_wheels(cls,new_wheels):
         cls.wheels=new_wheels
-c1 = Car(10)
-c2 = Car(20)
+c1=Car(10)
+c2=Car(20)
 print("Before change:")
 c1.display_specs()
 c2.display_specs()
 print("After change:")
-Car.change_wheels(6)
+Car.wheels=6
 c1.display_specs()
 c2.display_specs()

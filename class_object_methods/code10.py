@@ -16,30 +16,28 @@ class Student:
         self.name=name
         self.marks=marks
     def result(self):
-        if self.marks>=Student.passing_marks:
-            print("pass")
-        else:
-            print("fail")
+        if Student.passing_marks>=self.marks:
+            return True
+        return False
     @classmethod
-    def update_passing_marks(cls,new_marks):
+    def update_marks(cls,new_marks):
         cls.passing_marks=new_marks
     @staticmethod
     def grade_category(marks):
-        if marks>=75:
+        if marks>=85:
             return "A"
-        elif( marks>=50):
+        elif marks>=60:
             return "B"
         else:
             return "C"
-s1 = Student("Harshita", 82)
-s2 = Student("Sweety", 55)
-s3 = Student("Ravi", 38)
-print("Before updating")
+s1=Student("Harshita",90)
+s2=Student("Ravi",75)
+s3=Student("Anitha",40)
 for s in [s1,s2,s3]:
     print(f"{s.name} Grade: {Student.grade_category(s.marks)}")
     s.result()
-Student.update_passing_marks(45)
-print("After updating")
+Student.passing_marks=45
 for s in [s1,s2,s3]:
     print(f"{s.name} Grade: {Student.grade_category(s.marks)}")
     s.result()
+

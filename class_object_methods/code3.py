@@ -4,9 +4,10 @@
 class MathOps:
     @staticmethod
     def is_even(num):
-        return(num%2==0)
-print(MathOps.is_even(10))
-print(MathOps.is_even(5))
+        if num%2==0:
+            return True
+        else:
+            return False
 obj=MathOps()
-print(obj.is_even(12))
-print(obj.is_even(15))
+print(MathOps.is_even(10))
+print(obj.is_even(5))
