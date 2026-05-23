@@ -17,13 +17,15 @@ class Employee:
     @classmethod
     def update_bonus(cls,new_rate):
         cls.bonus_rate=new_rate
+        print("Bonus rate updated")
     @staticmethod
-    def is_valid_salary(salary):
-        return salary>0
-e1=Employee("Harshita",10000)
-e2=Employee("Sweety",20000)
+    def is_valid_salary(sal):
+        return sal>0
+e1=Employee("Harshita",20000)
+e2=Employee("Ravi",10000)
 print(e1.final_salary())
 print(e2.final_salary())
-Employee.update_bonus(2)
+Employee.bonus_rate=0.5
 print(e1.final_salary())
 print(e2.final_salary())
+print(e1.is_valid_salary(-10000))
