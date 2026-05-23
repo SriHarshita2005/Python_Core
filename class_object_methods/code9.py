@@ -1,64 +1,38 @@
 
+# . Create a class BankAccount with:
+# class variable bank_name
+# instance variables holder and balance
+# instance method deposit(amount)
+# class method change_bank_name(cls, new_name)
+# static method validate_amount(amount) → returns True if amount > 0
+# Show transactions and how static + class methods work together.
+
 class BankAccount:
-
-    # Class variable
-    bank_name = "State Bank"
-
-    # Constructor
-    def __init__(self, holder, balance):
-        self.holder = holder
-        self.balance = balance
-
-    # Static method
+    bank_name="Axis Bank"
+    def __init__(self,holder,balance):
+        self.holder=holder
+        self.balance=balance
+    def deposit(self,amount):
+        if self.balance>0:
+            self.balance+=amount
+            return self.balance
+        else:
+            return "Negative balance not allowed"
+    @classmethod
+    def change_bank_name(cls,new_name):
+        cls.bank_name=new_name
     @staticmethod
     def validate_amount(amount):
-        return amount > 0
+        return amount>0
 
-    # Instance method
-    def deposit(self, amount):
-
-        # Using static method inside instance method
-        if BankAccount.validate_amount(amount):
-            self.balance += amount
-            print(f"{amount} deposited successfully")
-        else:
-            print("Invalid deposit amount")
-
-    # Class method
-    @classmethod
-    def change_bank_name(cls, new_name):
-        cls.bank_name = new_name
-        print(f"\nBank name changed to: {cls.bank_name}")
-
-    # Display method
-    def display(self):
-        print("\nAccount Details")
-        print("Bank Name :", BankAccount.bank_name)
-        print("Holder Name :", self.holder)
-        print("Balance :", self.balance)
+b1=BankAccount("Harshita",10000)
+b2=BankAccount("Ravi", -20000)
+b1.deposit(1000)
+b2.deposit(-500)
+print(b1.balance)
+print(b2.balance)
+BankAccount.bank_name="State Bank"
+print(b2.validate_amount(-20000))
 
 
-# ---------------- DEMONSTRATION ----------------
 
-# Creating objects
-# acc1 = BankAccount("Harshita", 5000)
-# acc2 = BankAccount("Rahul", 3000)
-#
-# # Display initial details
-# acc1.display()
-# acc2.display()
-#
-# # Transactions
-# acc1.deposit(2000)
-# acc2.deposit(-500)
-#
-# # Display updated balances
-# acc1.display()
-# acc2.display()
-#
-# # Changing bank name using class method
-# BankAccount.change_bank_name("National Bank")
-#
-# # Updated bank name reflected in all objects
-# acc1.display()
-# acc2.display()
