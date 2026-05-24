@@ -18,46 +18,53 @@ class LibraryMember:
         self.books_borrowed = 0
         LibraryMember.total_members += 1
 
-    # instance method
     def borrow_book(self, title):
+        if not LibraryMember.check_title(title):
+            print("Invalid book title")
+            return
 
         if self.books_borrowed < LibraryMember.borrow_limit:
             self.books_borrowed += 1
             print(self.name, "borrowed", title)
         else:
-            print(self.name, "has reached borrowing limit")
+            print(self.name, "reached borrow limit")
 
-    # class method
     @classmethod
     def update_limit(cls, new_limit):
         cls.borrow_limit = new_limit
-        print("Borrow limit updated to:", cls.borrow_limit)
 
-    # static method
     @staticmethod
-    def valid_title(title):
-        return isinstance(title, str) and len(title) > 0 and len(title) <= 50
-# 1. Creating members
+    def check_title(title):
+        return isinstance(title, str) and len(title.strip()) > 0 and len(title) <= 30
+
+
+# Creating members
 m1 = LibraryMember("Harshita")
 m2 = LibraryMember("Ravi")
 
 # Borrowing books
 m1.borrow_book("Python Basics")
-m1.borrow_book("Data Science")
+m1.borrow_book("AI Book")
 
-m2.borrow_book("AI")
-m2.borrow_book("")   # invalid title
+m2.borrow_book("Data Science")
+m2.borrow_book("Machine Learning")
+m2.borrow_book("DBMS")
+m2.borrow_book("Networks")   # limit reached
 
-print("\nBooks Borrowed:")
-print(m1.name, ":", m1.books_borrowed)
-print(m2.name, ":", m2.books_borrowed)
-
-# 2. Change borrowing limit
+# Changing borrowing limit
 LibraryMember.update_limit(5)
 
-# Borrow more books
-m1.borrow_book("Machine Learning")
-m1.borrow_book("Deep Learning")
+print("New Borrow Limit:", LibraryMember.borrow_limit)
 
-# 3. Validation
-print("\nTotal Active Members:", LibraryMember.total_members)
+# Borrow again after limit change
+m2.borrow_book("Networks")
+
+# Checking invalid titles
+m1.borrow_book("")
+m1.borrow_book(" ")
+
+# Total members
+print("Total Members:", LibraryMember.total_members)
+
+
+

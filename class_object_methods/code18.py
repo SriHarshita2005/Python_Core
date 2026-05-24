@@ -11,47 +11,31 @@
 # 3.Checking bill updates and validation.
 
 class HotelRoom:
-    base_price = 2000   # price per night
-
-    def __init__(self, room_number, nights_booked, guest_name):
-        self.room_number = room_number
-        self.nights_booked = nights_booked
-        self.guest_name = guest_name
-
-    # instance method
+    base_price=1000
+    def __init__(self,rn,nb,gn):
+        self.rn=rn
+        self.nb=nb
+        self.gn=gn
     def total_bill(self):
-        return self.nights_booked * HotelRoom.base_price
-
-    # class method
+        return self.nb*HotelRoom.base_price
     @classmethod
-    def update_price(cls, new_price):
-        cls.base_price = new_price
-        print("Base price updated to:", cls.base_price)
-
-    # static method
+    def update(cls,new_price):
+        cls.base_price=new_price
     @staticmethod
-    def valid_nights(nights):
-        return isinstance(nights, int) and nights > 0
-1. Creating rooms and bookings
-r1 = HotelRoom(101, 3, "Harshita")
-r2 = HotelRoom(102, 5, "Ravi")
+    def check(nights):
+        return nights>0 and nights==int(nights)
+h1=HotelRoom(101,2,"Harshita")
+h2=HotelRoom(102,3,"Ravi")
+for h in [h1,h2]:
+    print(h.total_bill())
+HotelRoom.base_price=900
+for h in [h1,h2]:
+    print(h.total_bill())
+print(HotelRoom.check(10))
+print(HotelRoom.check(-5))
+print(HotelRoom.check(2.5))
 
-rooms = [r1, r2]
 
-print("Before price update:")
-for r in rooms:
-    print(r.guest_name,
-          "| Room:", r.room_number,
-          "| Valid Nights:", HotelRoom.valid_nights(r.nights_booked),
-          "| Total Bill:", r.total_bill())
 
-# 2. Changing base price
-HotelRoom.update_price(3000)
 
-# 3. Updated bills and validation
-print("\nAfter price update:")
-for r in rooms:
-    print(r.guest_name,
-          "| Room:", r.room_number,
-          "| Valid Nights:", HotelRoom.valid_nights(r.nights_booked),
-          "| Total Bill:", r.total_bill())
+
