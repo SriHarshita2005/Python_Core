@@ -8,3 +8,5 @@
 # 1.Managing multiple inventories.
 # 2.Adjusting stock threshold.
 # 3.Using static validation inside the instance logic.
+
+
