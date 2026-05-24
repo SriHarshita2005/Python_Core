@@ -10,57 +10,31 @@
 # 3.Displaying fit status and input validity.
 
 class Member:
-    bmi_limit = 25
-
-    def __init__(self, name, height, weight):
-        self.name = name
-        self.height = height
-        self.weight = weight
-
-    # instance method
+    bmi_limit=25
+    def __init__(self,name,height,weight):
+        self.name=name
+        self.height=height
+        self.weight=weight
     def check_fit(self):
-        bmi = self.weight / (self.height ** 2)
-
-        if bmi <= Member.bmi_limit:
-            status = "Fit"
+        bmi= self.weight/(self.height**2)
+        if Member.bmi_limit<=bmi:
+            return "Fit"
         else:
-            status = "Not Fit"
-
-        return round(bmi, 2), status
-
-    # class method
+            return "Not Fit"
     @classmethod
-    def update_bmi_limit(cls, new_limit):
-        cls.bmi_limit = new_limit
-        print("BMI limit updated to:", cls.bmi_limit)
-
-    # static method
+    def update_bmi(cls,new_bmi):
+        cls.bmi_limit=new_bmi
     @staticmethod
-    def valid_input(height, weight):
-        return height > 0 and weight > 0
-# 1. Creating members
-# m1 = Member("Harshita", 1.6, 50)
-# m2 = Member("Ravi", 1.7, 80)
-#
-# members = [m1, m2]
-#
-# print("Before BMI update:")
-# for m in members:
-#     bmi, status = m.check_fit()
-#
-#     print(m.name,
-#           "| Valid:", Member.valid_input(m.height, m.weight),
-#           "| BMI:", bmi,
-#           "| Status:", status)
-#
-# # 2. Updating BMI limit
-# Member.update_bmi_limit(30)
-#
-# print("\nAfter BMI update:")
-# for m in members:
-#     bmi, status = m.check_fit()
-#
-#     print(m.name,
-#           "| Valid:", Member.valid_input(m.height, m.weight),
-#           "| BMI:", bmi,
-#           "| Status:", status)
+    def check(height,weight):
+        return height>0 and weight>0
+m1 = Member("Harshita", 1.6, 50)
+m2 = Member("Ravi", 1.7, 80)
+for m in [m1,m2]:
+    print(m.name , m.check_fit())
+Member.bmi_limit=10
+for m in [m1,m2]:
+    print(m.name , m.check_fit())
+for m in [m1,m2]:
+    print(m.check(10,-20))
+
+

@@ -450,10 +450,11 @@ class Member:
     def valid_input(height, weight):
         return height > 0 and weight > 0
 # 1. Creating members
-# m1 = Member("Harshita", 1.6, 50)
+m1 = Member("Harshita", 1.6, 50)
 # m2 = Member("Ravi", 1.7, 80)
 #
 # members = [m1, m2]
+#
 #
 # print("Before BMI update:")
 # for m in members:
