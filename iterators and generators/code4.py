@@ -3,17 +3,16 @@
 class A:
     def __init__(self,a):
         self.a=a
-        self.c=0
+        self.index=0
     def __iter__(self):
         return self
     def __next__(self):
-        while True:
-            if self.c<len(self.a):
-                print (self.c, self.a[self.c])
-                self.c+=1
+        while(True):
+            if self.index<len(self.a):
+                print(self.index,self.a[self.index])
+                self.index+=1
             else:
                 raise StopIteration
-l = [10, 20, 30, 40]
-obj = A(l)
-for i in obj:
+a=A([10,20,30,40])
+for i in a:
     print(i)

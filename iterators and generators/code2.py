@@ -9,11 +9,12 @@ class A:
     def __next__(self):
         while True:
             if self.c<=len(self.a):
+                if self.a[self.c]%2==0:
+                    value=self.a[self.c]
+                    print( value)
                 self.c+=1
-                if self.c%2==0:
-                    print (self.c)
             else:
                 raise StopIteration
-# a=A([1,2,3,4,5,6])
-# for i in a:
-#     print(i)
+a=A([1,2,3,4,5,6,1,2,3,4])
+for i in a:
+    print(i)
