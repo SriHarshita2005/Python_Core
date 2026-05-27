@@ -132,8 +132,8 @@ def is_prime(n):
     for i in range(2,n):
         if n%i==0:
             return "Composite number"
-        else:
-            return "Prime number"
+
+    return "Prime number"
 # n=int(input())
 # print(is_prime(n))
 
@@ -185,3 +185,42 @@ def prime_digits(n):
 
 
 #Find the product of prime numbers in a range.
+def product_prime(n):
+    p=1
+    for i in range(1,n+1):
+        fc=0
+        for j in range(1,i+1):
+            if i%j==0:
+                fc+=1
+        if fc==2:
+            p=p*i
+    print(p)
+# n=int(input())
+# product_prime(n)
+
+
+#Check whether a number is a prime palindrome.
+def is_prime(n):
+    for i in range(2,n):
+        if n%i==0:
+            return False
+
+    return True
+def palindrome(n):
+    rev=0
+    temp=n
+    while n!=0:
+        rem=n%10
+        rev=rev*10+rem
+        n=n//10
+    if rev==temp:
+        return True
+    return False
+
+# n=int(input())
+# if(is_prime(n) and palindrome(n)):
+#     print("Prime Palindrome")
+
+#Find all prime factors of a number.
+
+

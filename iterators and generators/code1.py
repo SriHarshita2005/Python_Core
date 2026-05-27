@@ -2,8 +2,8 @@
 
 class A:
     def __init__(self,a):
-        self.a=a
         self.c=0
+        self.a=a
     def __iter__(self):
         return self
     def __next__(self):
@@ -15,4 +15,4 @@ class A:
                 raise StopIteration
 a=A(10)
 for i in a:
-    print (i)
+    print(i)

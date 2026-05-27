@@ -1,5 +1,4 @@
 # 4. Write an iterator that yields elements of a list with their index (dont use enumerate)’
-
 class A:
     def __init__(self,a):
         self.a=a
@@ -7,12 +6,13 @@ class A:
     def __iter__(self):
         return self
     def __next__(self):
-        while(True):
+        while True:
             if self.index<len(self.a):
-                print(self.index,self.a[self.index])
+                print(self.index , self.a[self.index])
                 self.index+=1
             else:
                 raise StopIteration
-a=A([10,20,30,40])
+l=[10,20,30,40]
+a=A(l)
 for i in a:
     print(i)

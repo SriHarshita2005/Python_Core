@@ -2,8 +2,8 @@
 
 def gen(n):
     for i in n:
-        if i in "aeiouAEIOU":
-            yield(i)
-n="Hello"
+        if i in "AEIOUaeiou":
+            yield i
+n='Hello'
 for i in gen(n):
     print(i)

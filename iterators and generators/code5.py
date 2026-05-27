@@ -4,5 +4,4 @@ def gen(n):
     for i in str(n):
         yield int(i)
 n=12345
-for i in gen(n):
-    print(i)
+print(list(gen(n)))

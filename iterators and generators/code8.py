@@ -10,11 +10,10 @@ class A:
     def __next__(self):
         while True:
             if self.index<len(self.word):
-                print(self.word[self.index])
+                print (self.word[self.index])
                 self.index+=1
             else:
                 raise StopIteration
-a = "Python is easy to learn"
-obj = A(a)
-for i in obj:
+a=A("Python is love")
+for i in a :
     print(i)
