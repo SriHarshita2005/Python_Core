@@ -1,4 +1,3 @@
-# #
 #  Create a class Student with:
 # class variable passing_marks = 40
 # instance attributes name, marks
@@ -34,7 +33,7 @@ s1=Student("Harshita",90)
 s2=Student("Ravi",75)
 s3=Student("Anitha",40)
 for s in [s1,s2,s3]:
-    print(f"{s.name} Grade: {Student.grade_category(s.marks)}")
+    print(f"{s.name} Grade: {s.grade_category(s.marks)}")
     s.result()
 Student.passing_marks=45
 for s in [s1,s2,s3]:

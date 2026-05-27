@@ -27,6 +27,6 @@ s1.enroll()
 s1.show_total()
 s2.enroll()
 s2.show_total()
-print(s1.age(10))
+print(s1.is_eligible(10))
 
 
