@@ -134,15 +134,54 @@ def is_prime(n):
             return "Composite number"
         else:
             return "Prime number"
-n=int(input())
-print(is_prime(n))
+# n=int(input())
+# print(is_prime(n))
+
+#Find the nth prime number.
+def nth_pn(n):
+    p=2
+    c=0
+    while True:
+        fc=0
+        for i in range(1,p+1):
+            if p%i==0:
+                fc+=1
+        if fc==2:
+            c+=1
+            if c==n:
+                print(p)
+                break
+        p+=1
+# n=int(input())
+# nth_pn(n)
 
 
+#Print prime numbers in reverse order.
+def reverse_order(n):
+    for i in range(n,1,-1):
+        fc=0
+        for j in range(1,i+1):
+            if i%j==0:
+                fc+=1
+        if fc==2:
+            print(i,end=" ")
+# n=int(input())
+# reverse_order(n)
 
 
+#Count how many prime digits are present in a number.
+def prime_digits(n):
+    while(n!=0):
+        rem=n%10
+        fc=0
+        for i in range(1,rem+1):
+            if rem%i==0:
+                fc+=1
+        if fc==2:
+            print(rem,end=" ")
+        n=n//10
+# n=int(input())
+# prime_digits(n)
 
 
-
-
-
-
+#Find the product of prime numbers in a range.
