@@ -205,7 +205,35 @@ def is_circular(n):
         if is_prime(num):
             print(num)
         e-=1
+# n=int(input())
+# is_circular(n)
+
+#first n prime numbers
+# n=int(input())
+# c=0
+# p=2
+# while True:
+#     fc=0
+#     for j in range(1,p+1):
+#         if p%j==0:
+#             fc+=1
+#     if fc==2:
+#         print(p,end=" ")
+#         c+=1
+#         if c==n:
+#             break
+#     p+=1
+
+#prime numbers upto n
 n=int(input())
-is_circular(n)
+for i in range(1,n+1):
+    fc=0
+    for j in range (1,i+1):
+        if i%j==0:
+            fc+=1
+    if fc==2:
+        print(i,end=" ")
+
+
 
 
