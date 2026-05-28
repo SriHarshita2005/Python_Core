@@ -1,61 +1,48 @@
-'''
- Given two lists: a = [1, 2, 3, 4] b = [10, 20, 30, 40]
- Use map() with a lambda to create a new list containing
- the sum of corresponding elements.
- What happens if the lists are of unequal length?
+# Given two lists: a = [1, 2, 3, 4] b = [10, 20, 30, 40]
+# Use map() with a lambda to create a new list containing
+# the sum of corresponding elements.
+# What happens if the lists are of unequal length?
+
+# a=[1,2,3,4]
+# b=[10,20,30,40]
+# n=list(map(lambda x,y : x+y , a,b))
+# print(n)
 
 
-a=[1,2,3,4]
-b=[10,20,30,40]
-result=list(map(lambda a,b: a+b , a,b))
-print(result)
+# Given a list: nums = [12, 15, 7, 18, 20, 21, 25]
+# Use filter() and lambda to keep numbers that are divisible
+# by 3 OR divisible by 5 but NOT divisible by both.
+# Explain how the logical condition works.
 
-'''
+# nums=[12,15,7,18,20,21,25]
+# result=list(filter(lambda x : (x%3==0 or x%5==0 ) and not (x%3==0 and x%5==0) , nums))
+# print(result)
 
-''' 
-Given a list: nums = [12, 15, 7, 18, 20, 21, 25] 
-Use filter() and lambda to keep numbers that are divisible 
-by 3 OR divisible by 5 but NOT divisible by both. 
-Explain how the logical condition works.
-
-nums=[12,15,7,18,20,21,25]
-result=list(filter(lambda x: (x%3==0 or x%5==0)and not(x%3==0 and x%5==0),nums))
-print(result)
-'''
-
-
-''' 
-Given a list: nums = [1, 2, 3, 4] Use reduce() with a lambda to compute the sum,
- but start with an initial value of 10. 
- Explain how the initial value affects the reduction process.
+# Given a list: nums = [1, 2, 3, 4] Use reduce() with a lambda to compute the sum,
+#  but start with an initial value of 10.
+#  Explain how the initial value affects the reduction process.
  
- 
-nums=[1,2,3,4]
-from functools import reduce
-result=(reduce(lambda x,y: x+y,nums,10))
-print(result)
-'''
+# nums=[1,2,3,4]
+# from functools import reduce
+# result=reduce(lambda x,y: x+y , nums , 100)
+# print(result)
 
 
-'''
- Consider the code below: nums = [[1, 2], [3, 4], [5, 6]] 
- result = list(map(lambda x: x.append(10), nums)) 
- print("Result:", result) print("Nums:", nums) 
- Questions • What will be the output of result? • What will be the output of nums? • 
- Why does map() behave this way with list.append()? • 
- How can you modify the lambda so that nums is not changed?
+# Consider the code below: nums = [[1, 2], [3, 4], [5, 6]]
+# result = list(map(lambda x: x.append(10), nums))
+# print("Result:", result) print("Nums:", nums)
+# Questions • What will be the output of result? • What will be the output of nums? •
+# Why does map() behave this way with list.append()? •
+# How can you modify the lambda so that nums is not changed?
+
+# nums = [[1, 2], [3, 4], [5, 6]]
+# result = list(map(lambda x: x.append(10), nums))
+# print("Result:", result)
+# print("Nums:", nums)
 
 
-nums = [[1, 2], [3, 4], [5, 6]]
-result = list(map(lambda x: x.append(10), nums))
-print("Result:", result)
-print("Nums:", nums)
-'''
-
-'''
- Use map() with a lambda to add 5 to every element of the following nested list
-  [[1, 2], [3, 4], [5, 6]]
-
+#Use map() with a lambda to add 5 to every element of the following nested list
+# [[1, 2], [3, 4], [5, 6]]
 
 l=[[1,2],[3,4],[5,6]]
 result=list(map(lambda subs: list(map(lambda x: x+5, subs)),l))

@@ -222,5 +222,89 @@ def palindrome(n):
 #     print("Prime Palindrome")
 
 #Find all prime factors of a number.
+def prime_factors(n):
+    for i in range(1,n+1):
+        if n%i==0:
+            fc=0
+            for j in range(1,i+1):
+                if i%j==0:
+                    fc+=1
+            if fc==2:
+                print(i,end=" ")
+# n=int(input())
+# prime_factors(n)
+
+#Find the largest prime factor of a number.
+def prime_factors(n):
+    for i in range(n,1,-1):
+        if n%i==0:
+            fc=0
+            for j in range(1,i+1):
+                if i%j==0:
+                    fc+=1
+            if fc==2:
+                print(i,end=" ")
+                break
+# n=int(input())
+# prime_factors(n)
+
+#Find all twin primes between 1 and N.
+
+def is_prime(n):
+    if n<2:
+        return False
+    for i in range(2,n):
+        if n%i==0:
+            return False
+    return True
+# n=int(input())
+# for i in range(2,n):
+#     if is_prime(i) and is_prime(i+2):
+#         if i+2<=n:
+#             print(i,i+2)
+
+
+#Check whether a number is co-prime with another number.
+def co_prime(a,b):
+    if a>b:
+        a,b=b,a
+    for i in range(a,0,-1):
+        if a%i==0 and b%i==0:
+            gcd=i
+            if gcd==1:
+                return True
+            else:
+                return False
+# a=int(input())
+# b=int(input())
+# print(co_prime(a,b))
+
+#Check whether a number is a circular prime.
+def is_prime(n):
+    if n<2:
+        return False
+    for i in range(2,n):
+        if n%i==0:
+            return False
+    return True
+def is_circular(n):
+    c=len(str(n))
+    num=n
+    e=c
+    while e!=0:
+        ld=num%10
+        rem=num//10
+        num=(ld*(10**(c-1)))+rem
+        print(num)
+        if not is_prime(num):
+            return "Not Circular Prime"
+        e-=1
+    return "Circular Prime"
+n=int(input())
+is_circular(n)
+
+
+
+
 
 
