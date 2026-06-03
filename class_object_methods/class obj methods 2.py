@@ -7,57 +7,42 @@
 # # 1.Creating multiple students.
 # # 2.Applying a grading curve.
 # # 3.Displaying updated results with letter grades.
-#
-# class Student:
-#     total_students = 0
-#     passing_marks = 40
-#
-#     def __init__(self, name, marks):
-#         self.name = name
-#         self.marks = marks
-#         Student.total_students += 1
-#
-#     def result(self):
-#         if self.marks >= Student.passing_marks:
-#             return "Pass"
-#         else:
-#             return "Fail"
-#
-#     @classmethod
-#     def apply_curve(cls, students, percent):
-#         for s in students:
-#             s.marks += s.marks * percent / 100
-#
-#     @staticmethod
-#     def convert(marks):
-#         if marks >= 75:
-#             return "A"
-#         elif marks >= 50:
-#             return "B"
-#         else:
-#             return "C"
-#
-#
-# # Creating students
-# s1 = Student("Harshita", 80)
-# s2 = Student("Sweety", 40)
-# s3 = Student("Ravi", 70)
-# s4 = Student("Anitha", 20)
-#
-# students = [s1, s2, s3, s4]
-#
-# print("Before Curve:")
-# for s in students:
-#     print(s.name, s.marks, Student.convert(s.marks), s.result())
-#
-# # Apply curve
-# Student.apply_curve(students, 10)
-#
-# print("\nAfter Curve:")
-# for s in students:
-#     print(s.name, round(s.marks, 2), Student.convert(s.marks), s.result())
-#
-# print("\nTotal Students:", Student.total_students)
+
+class Student:
+    total_students=0
+    passing_marks=50
+    def __init__(self,name,marks):
+        self.name=name
+        self.marks=marks
+        Student.total_students+=1
+    def is_passed(self):
+        if self.marks>Student.passing_marks:
+            print("Pass")
+        else:
+            print("Fail")
+    def curve_marks(self,percentage):
+        increase=self.marks+percentage/100
+        self.marks+=increase
+        if self.marks>100:
+            self.marks=100
+    @staticmethod
+    def grade(marks):
+        if marks>=85:
+            print("A")
+        elif marks>=75:
+            print("B")
+        else:
+            print("C")
+# s1=Student("Harshita",78)
+# s2=Student("Ravi",50)
+# s1.is_passed()
+# s2.is_passed()
+# s1.curve_marks(10)
+# s2.curve_marks(10)
+# s1.is_passed()
+# s2.is_passed()
+# Student.grade(s1.marks)
+# Student.grade(s2.marks)
 
 # Q2. Design a class Product that:
 # Maintains a base tax rate applicable to all products.
@@ -70,20 +55,20 @@
 # 2.Changing the tax rate.
 # 3.Showing updated prices and validity checks.
 
-# class Product:
-#     base_tax_rate=5
-#     def __init__(self,name,base_price):
-#         self.name=name
-#         self.base_price=base_price
-#     def final_price(self):
-#         tax = self.base_price * Product.base_tax_rate / 100
-#         return self.base_price + tax
-#     @classmethod
-#     def change_tax_rate(cls,new_rate):
-#         cls.base_tax_rate=new_rate
-#     @staticmethod
-#     def valid(price):
-#         return  price>=0 and price<=1000000
+class Product:
+    base_tax_rate=5
+    def __init__(self,name,base_price):
+        self.name=name
+        self.base_price=base_price
+    def final_price(self):
+        tax = self.base_price * Product.base_tax_rate / 100
+        return self.base_price + tax
+    @classmethod
+    def change_tax_rate(cls,new_rate):
+        cls.base_tax_rate=new_rate
+    @staticmethod
+    def valid(price):
+        return  price>=0 and price<=1000000
 # p1 = Product("Laptop", 50000)
 # p2 = Product("Phone", 20000)
 # p3 = Product("Watch", -500)
@@ -107,24 +92,24 @@
 # 2.Changing promotion criteria.
 # 3.Displaying eligibility results and department validation.
 
-# class Employee:
-#     min_experience=3
-#     def __init__(self,name,experience,dept):
-#         self.name=name
-#         self.experience=experience
-#         self.dept=dept
-#     def check_eligibility(self):
-#         if self.experience>=Employee.min_experience:
-#             return "Eligible"
-#         else:
-#             return "Not eligible"
-#     @classmethod
-#     def update(cls,new_exp):
-#         cls.min_experience=new_exp
-#         print("Minimum experience updated to:",cls.min_experience)
-#     @staticmethod
-#     def valid_department(dept):
-#         return dept in["HR","Tech","Admin"]
+class Employee:
+    min_experience=3
+    def __init__(self,name,experience,dept):
+        self.name=name
+        self.experience=experience
+        self.dept=dept
+    def check_eligibility(self):
+        if self.experience>=Employee.min_experience:
+            return "Eligible"
+        else:
+            return "Not eligible"
+    @classmethod
+    def update(cls,new_exp):
+        cls.min_experience=new_exp
+        print("Minimum experience updated to:",cls.min_experience)
+    @staticmethod
+    def valid_department(dept):
+        return dept in["HR","Tech","Admin"]
 # e1 = Employee("Harshita", 4, "Tech")
 # e2 = Employee("Ravi", 2, "HR")
 # e3 = Employee("Anitha", 5, "Finance")
@@ -150,20 +135,20 @@
 # 2.Updating interest rates.
 # 3.Checking eligibility and total repayment for borrowers.
 
-# class Loan:
-#     interest_rate=5
-#     def __init__(self,name,principal):
-#         self.name=name
-#         self.principal=principal
-#     def payable_amount(self):
-#         return self.principal*Loan.interest_rate
-#     @classmethod
-#     def update(cls,new_rate):
-#         cls.interest_rate=new_rate
-#         print("Interest rate updated to:", cls.interest_rate)
-#     @staticmethod
-#     def is_eligible(salary):
-#         return salary>20000
+class Loan:
+    interest_rate=5
+    def __init__(self,name,principal):
+        self.name=name
+        self.principal=principal
+    def payable_amount(self):
+        return self.principal*Loan.interest_rate
+    @classmethod
+    def update(cls,new_rate):
+        cls.interest_rate=new_rate
+        print("Interest rate updated to:", cls.interest_rate)
+    @staticmethod
+    def is_eligible(salary):
+        return salary>20000
 # l1 = Loan("Harshita", 100000)
 # l2 = Loan("Ravi", 50000)
 # print("Before updating")
@@ -185,42 +170,39 @@
 # 2.Enrolling students.
 # 3.Updating minimum duration and checking durations.
 
-# class Course:
-#     total_courses=0
-#     def __init__(self,title,duration,enrolled_students):
-#         self.title=title
-#         self.duration=duration
-#         self.enrolled_students=enrolled_students
-#         Course.total_courses+=1
-#     def enroll(self):
-#         self.enrolled_students+=1
-#
-#     @classmethod
-#     def update_min_duration(cls, new_duration):
-#         cls.min_duration = new_duration
-#         print("Minimum duration updated to:", cls.min_duration)
-#
-#     @staticmethod
-#     def valid_duration(duration):
-#         return duration > 0 and duration <= 100
-# c1 = Course("Python", 30, 10)
-# c2 = Course("Java", 40, 5)
-# c3 = Course("C++", -5, 2)   # invalid duration
-# courses = [c1, c2, c3]
+class Course:
+    total_courses=0
+    min_duration=10
+    def __init__(self,title,duration):
+        if Course.check_duration(duration):
+            self.title=title
+            self.duration=duration
+
+            Course.total_courses+=1
+            self.enrolled_students=0
+
+        else:
+            print("Invalid Duration")
+    def enroll(self):
+        self.enrolled_students+=1
+        print("Student enrolled successfully")
+    @classmethod
+    def update_min_duration(cls,new_duration):
+        cls.min_duration=new_duration
+    @staticmethod
+    def check_duration(duration):
+        return duration>0 and duration<100
+# c1=Course("Python",30)
+# c2=Course("Java",45)
+# print(Course.total_courses)
 # c1.enroll()
 # c2.enroll()
-# print("Before update:")
-# for c in courses:
-#     print(c.title,
-#           "| Duration valid:", Course.valid_duration(c.duration),
-#           "| Students:", c.enrolled_students)
-# Course.update_min_duration(10)
-# print("\nAfter update:")
-# for c in courses:
-#     print(c.title,
-#           "| Duration valid:", Course.valid_duration(c.duration),
-#           "| Students:", c.enrolled_students)
-# print("\nTotal Courses:", Course.total_courses)
+# Course.min_duration=20
+# print(Course.check_duration(50))
+# print(Course.check_duration(-5))
+# print(Course.check_duration(150))
+
+
 
 # Design a class Vehicle that:
 # Keeps a record of service charge rate common to all vehicles.
@@ -233,41 +215,41 @@
 # 2.Updating the service rate.
 # 3.Showing charges and eligibility checks.
 
-# class Vehicle:
-#     service_charge_rate=100
-#     def __init__(self,model, kilometers_run,service_history):
-#         self.model=model
-#         self.kilometers_run=kilometers_run
-#         self.service_history=service_history
-#
-#     def service_charge(self):
-#         return self.kilometers_run * Vehicle.service_charge_rate
-#     @classmethod
-#     def update_rate(cls, new_rate):
-#         cls.service_charge_rate = new_rate
-#         (print("Service charge rate updated to:", cls.service_charge_rate))
-#     @staticmethod
-#     def eligible(years_old):
-#         return years_old <= 15
-# v1 = Vehicle("Honda City", 10, 2)
-# v2 = Vehicle("Swift", 20, 5)
-#
-# vehicles = [v1, v2]
-#
-# print("Before updating rate:")
-# for v in vehicles:
-#     print(v.model,
-#           "| Charge:", v.service_charge(),
-#           "| Eligible:", Vehicle.eligible(v.service_history))
-#
-# # update rate
-# Vehicle.update_rate(150)
-#
-# print("\nAfter updating rate:")
-# for v in vehicles:
-#     print(v.model,
-#           "| Charge:", v.service_charge(),
-#           "| Eligible:", Vehicle.eligible(v.service_history))
+class Vehicle:
+    service_charge_rate=100
+    def __init__(self,model, kilometers_run,service_history):
+        self.model=model
+        self.kilometers_run=kilometers_run
+        self.service_history=service_history
+
+    def service_charge(self):
+        return self.kilometers_run * Vehicle.service_charge_rate
+    @classmethod
+    def update_rate(cls, new_rate):
+        cls.service_charge_rate = new_rate
+        (print("Service charge rate updated to:", cls.service_charge_rate))
+    @staticmethod
+    def eligible(years_old):
+        return years_old <= 15
+v1 = Vehicle("Honda City", 10, 2)
+v2 = Vehicle("Swift", 20, 5)
+
+vehicles = [v1, v2]
+
+print("Before updating rate:")
+for v in vehicles:
+    print(v.model,
+          "| Charge:", v.service_charge(),
+          "| Eligible:", Vehicle.eligible(v.service_history))
+
+# update rate
+Vehicle.update_rate(150)
+
+print("\nAfter updating rate:")
+for v in vehicles:
+    print(v.model,
+          "| Charge:", v.service_charge(),
+          "| Eligible:", Vehicle.eligible(v.service_history))
 
 #  Build an Inventory class that:
 # Tracks the total number of items across all inventories.
@@ -279,6 +261,47 @@
 # 1.Managing multiple inventories.
 # 2.Adjusting stock threshold.
 # 3.Using static validation inside the instance logic.
+
+class Inventory:
+    total_items=0
+    min_threshold=5
+    def __init__(self):
+        self.stock={}
+    def add_stock(self,item,quantity):
+        if item in self.stock:
+            self.stock[item]+=quantity
+        else:
+            self.stock[item]=quantity
+        Inventory.total_items+=quantity
+    def remove_stock(self,item,quantity):
+        if item in self.stock:
+            if self.stock[item]>quantity:
+                self.stock[item]-=quantity
+                Inventory.total_items-= quantity
+                if Inventory.check(self.stock[item]):
+                    print(item, "stock is below threshold")
+            else:
+                print("Not enough stock")
+        else:
+            print("Item not found")
+    @classmethod
+    def update_threshold(cls,value):
+        cls.min_threshold=value
+    @staticmethod
+    def check(quantity):
+        return quantity < Inventory.min_threshold
+    def display(self):
+        return (self.stock)
+i1=Inventory()
+i2=Inventory()
+i1.add_stock("Pen",20)
+i1.add_stock("Book",10)
+i2.add_stock("Bag",10)
+print("Inventory1:", i1.display())
+print("Inventory2:", i2.display())
+Inventory.min_threshold=7
+i2.remove_stock("Bag",5)
+print(i2.display())
 
 
 
@@ -297,28 +320,28 @@
 # 2.Changing base price.
 # 3.Checking bill updates and validation.
 
-# class HotelRoom:
-#     base_price = 2000   # price per night
-#
-#     def __init__(self, room_number, nights_booked, guest_name):
-#         self.room_number = room_number
-#         self.nights_booked = nights_booked
-#         self.guest_name = guest_name
-#
-#     # instance method
-#     def total_bill(self):
-#         return self.nights_booked * HotelRoom.base_price
-#
-#     # class method
-#     @classmethod
-#     def update_price(cls, new_price):
-#         cls.base_price = new_price
-#         print("Base price updated to:", cls.base_price)
-#
-#     # static method
-#     @staticmethod
-#     def valid_nights(nights):
-#         return isinstance(nights, int) and nights > 0
+class HotelRoom:
+    base_price = 2000   # price per night
+
+    def __init__(self, room_number, nights_booked, guest_name):
+        self.room_number = room_number
+        self.nights_booked = nights_booked
+        self.guest_name = guest_name
+
+    # instance method
+    def total_bill(self):
+        return self.nights_booked * HotelRoom.base_price
+
+    # class method
+    @classmethod
+    def update_price(cls, new_price):
+        cls.base_price = new_price
+        print("Base price updated to:", cls.base_price)
+
+    # static method
+    @staticmethod
+    def valid_nights(nights):
+        return isinstance(nights, int) and nights > 0
 # 1. Creating rooms and bookings
 # r1 = HotelRoom(101, 3, "Harshita")
 # r2 = HotelRoom(102, 5, "Ravi")
@@ -383,30 +406,30 @@ class LibraryMember:
     @staticmethod
     def valid_title(title):
         return isinstance(title, str) and len(title) > 0 and len(title) <= 50
-# 1. Creating members
-m1 = LibraryMember("Harshita")
-m2 = LibraryMember("Ravi")
-
-# Borrowing books
-m1.borrow_book("Python Basics")
-m1.borrow_book("Data Science")
-
-m2.borrow_book("AI")
-m2.borrow_book("")   # invalid title
-
-print("\nBooks Borrowed:")
-print(m1.name, ":", m1.books_borrowed)
-print(m2.name, ":", m2.books_borrowed)
-
-# 2. Change borrowing limit
-LibraryMember.update_limit(5)
-
-# Borrow more books
-m1.borrow_book("Machine Learning")
-m1.borrow_book("Deep Learning")
-
-# 3. Validation
-print("\nTotal Active Members:", LibraryMember.total_members)
+# # 1. Creating members
+# m1 = LibraryMember("Harshita")
+# m2 = LibraryMember("Ravi")
+#
+# # Borrowing books
+# m1.borrow_book("Python Basics")
+# m1.borrow_book("Data Science")
+#
+# m2.borrow_book("AI")
+# m2.borrow_book("")   # invalid title
+#
+# print("\nBooks Borrowed:")
+# print(m1.name, ":", m1.books_borrowed)
+# print(m2.name, ":", m2.books_borrowed)
+#
+# # 2. Change borrowing limit
+# LibraryMember.update_limit(5)
+#
+# # Borrow more books
+# m1.borrow_book("Machine Learning")
+# m1.borrow_book("Deep Learning")
+#
+# # 3. Validation
+# print("\nTotal Active Members:", LibraryMember.total_members)
 
 
 #  Create a class Member that:
@@ -450,7 +473,7 @@ class Member:
     def valid_input(height, weight):
         return height > 0 and weight > 0
 # 1. Creating members
-m1 = Member("Harshita", 1.6, 50)
+#m1 = Member("Harshita", 1.6, 50)
 # m2 = Member("Ravi", 1.7, 80)
 #
 # members = [m1, m2]

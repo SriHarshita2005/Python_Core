@@ -169,11 +169,11 @@ class Course:
         self.student_name=student_name
     def enroll(self):
         Course.total_students+=1
-        print(f"{self.total_students} enrolled successfully")
+        print(f"{self.total_students} students enrolled successfully")
 
     @classmethod
     def show_total(cls):
-        return cls.total_students
+        print("Total students are : ",cls.total_students)
     @staticmethod
     def is_eligible(age):
         return age>18

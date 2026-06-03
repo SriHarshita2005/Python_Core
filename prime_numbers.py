@@ -289,19 +289,21 @@ def is_prime(n):
     return True
 def is_circular(n):
     c=len(str(n))
-    num=n
     e=c
-    while e!=0:
+    num=n
+    while(e!=0):
         ld=num%10
         rem=num//10
-        num=(ld*(10**(c-1)))+rem
-        print(num)
+        num=ld*(10**(c-1))+rem
+
         if not is_prime(num):
             return "Not Circular Prime"
+        print(num)
         e-=1
     return "Circular Prime"
 n=int(input())
-is_circular(n)
+print(is_circular(n))
+
 
 
 

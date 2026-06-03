@@ -218,36 +218,36 @@ class Product:
 #create a class product with name , price, quantity. Create a class cart that stores the products
 #c1 as cart class obj and p1 as product class obj
 # c1+p1 ---> adds products into cart
-# class Product:
-#     def __init__(self,name,price,quantity):
-#         self.name=name
-#         self.price=price
-#         self.quantity=quantity
-#
-#     def __str__(self):
-#         return f"Name:{self.name}\nPrice:{self.price}\nQuantity:{self.quantity}"
-#
-# class Cart:
-#     def __init__(self):
-#         self.l=[]
-#     def __add__(self, other):
-#         self.l.append(other)
-#         return self
-#     def __sub__(self, other):
-#         if other in self.l:
-#             self.l.remove(other)
-#         return self
-#     def total_price(self):
-#         s=0
-#         for i in self.l:
-#             s+=(i.price*i.quantity)
-#         return s
-#     def __str__(self):
-#         for i in self.l:
-#             print(i)
-#         print(f"Total Products:{len(self.l)}")
-#         print(f"Total_price:{self.total_price()}")
-#         return "Thanks for products"
+class Product:
+    def __init__(self,name,price,quantity):
+        self.name=name
+        self.price=price
+        self.quantity=quantity
+
+    def __str__(self):
+        return f"Name:{self.name}\nPrice:{self.price}\nQuantity:{self.quantity}"
+
+class Cart:
+    def __init__(self):
+        self.l=[]
+    def __add__(self, other):
+        self.l.append(other)
+        return self
+    def __sub__(self, other):
+        if other in self.l:
+            self.l.remove(other)
+        return self
+    def total_price(self):
+        s=0
+        for i in self.l:
+            s+=(i.price*i.quantity)
+        return s
+    def __str__(self):
+        for i in self.l:
+            print(i)
+        print(f"Total Products:{len(self.l)}")
+        print(f"Total_price:{self.total_price()}")
+        return "Thanks for products"
 # p1=Product("BOOK", 100,10)
 # c1=Cart("Book",100,3)
 #
@@ -294,25 +294,25 @@ class BankAccount:
     def __lt__(self, other):
         return self.balance < other.balance
     def __getattribute__(self, name):
-        #print(f"Accessing attribute{name}")
+        print(f"Accessing attribute{name}")
         return object.__getattribute__(self,name)
     def __setattr__(self, name, value):
         if name=="balance" and value<0:
             print("Negative balance is not allowed")
         else:
             return object.__setattr__(self,name,value)
-acc1=BankAccount("Harshita",5000)
-acc2=BankAccount("Ravi",3000)
-print(acc1)
-print(acc2)
-acc1.deposit(2000)
-acc2.withdraw(1000)
-print("Total Balance:",acc1+acc2)
-print("Balance Difference:", acc1 - acc2)
-print("Same Balance:",acc1==acc2)
-print("Acc1 has lower balance:",acc1<acc2)
-print(acc1.balance)
-acc1.balance=-500
+# acc1=BankAccount("Harshita",5000)
+# acc2=BankAccount("Ravi",3000)
+# print(acc1)
+# print(acc2)
+# acc1.deposit(2000)
+# acc2.withdraw(1000)
+# print("Total Balance:",acc1+acc2)
+# print("Balance Difference:", acc1 - acc2)
+# print("Same Balance:",acc1==acc2)
+# print("Acc1 has lower balance:",acc1<acc2)
+# print(acc1.balance)
+# acc1.balance=-500
 
 # Question 2: Product Price Comparison
 # Create a class Product with:
@@ -588,7 +588,7 @@ class CartItem:
     def final_amount(self):
         return self.price*self.quantity
     def __str__(self):
-        return f"Name:{self.item_name} , Price:{self.price} , Quantity:{self.quantity} , FinamAmount:{self.final_amount()}"
+        return f"Name:{self.item_name} , Price:{self.price} , Quantity:{self.quantity} , FinalAmount:{self.final_amount()}"
     def __add__(self, other):
         return self.final_amount()+other.final_amount()
     def __mod__(self, other):

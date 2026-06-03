@@ -56,17 +56,17 @@ class A:
         return self
     def __next__(self):
         while True:
-            if self.c<=len(self.a):
+            if self.c<len(self.a):
                 if self.a[self.c]%2==0:
-                    value=self.a[self.c]
-                    return value
+                    print(self.a[self.c])
+
                 self.c+=1
             else:
                 raise StopIteration
-# a=A([1,2,3,4,5,6])
-# for i in a:
-#     print(i)
-# 3. Implement an iterator that iterates over a string character by character in reverse order.
+a=A([1,2,3,4,5,6])
+for i in a:
+    print(i)
+#3. Implement an iterator that iterates over a string character by character in reverse order.
 
 st="Hello"
 it=iter(st[::-1])
@@ -166,15 +166,17 @@ for i in obj:
 
 # 10. Implement a generator that yields running maximum from a list Example: [3,1,4,2] → 3, 3, 4, 4
 
-def gen(l):
+def gen(nums):
     m = 0
-    for i in l:
+    for i in nums:
         if i > m:
             m = i
         yield m
 nums = [3, 1, 4, 2]
-g = gen(nums)
-print(next(g))
-print(next(g))
-print(next(g))
-print(next(g))
+for i in gen(nums):
+     print(i)
+# g = gen(nums)
+# print(next(g))
+# print(next(g))
+# print(next(g))
+# print(next(g))

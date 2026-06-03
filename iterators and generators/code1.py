@@ -2,8 +2,8 @@
 
 class A:
     def __init__(self,a):
-        self.c=0
         self.a=a
+        self.c=0
     def __iter__(self):
         return self
     def __next__(self):
@@ -16,3 +16,5 @@ class A:
 a=A(10)
 for i in a:
     print(i)
+
+

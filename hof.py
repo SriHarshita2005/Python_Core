@@ -24,7 +24,7 @@
  
 # nums=[1,2,3,4]
 # from functools import reduce
-# result=reduce(lambda x,y: x+y , nums , 100)
+# result=reduce(lambda x,y: x+y , nums , 10)
 # print(result)
 
 
@@ -43,79 +43,96 @@
 
 #Use map() with a lambda to add 5 to every element of the following nested list
 # [[1, 2], [3, 4], [5, 6]]
+#l=[[1,2],[3,4],[5,6]]
 
-l=[[1,2],[3,4],[5,6]]
-result=list(map(lambda subs: list(map(lambda x: x+5, subs)),l))
-print(result)
+#result=list(map(lambda subs: list(map(lambda x: x+5,subs)),l))
+#print(result)
+#
 
-'''
+#  Given a dictionary: d = {"apple": 100, "banana": 40, "cherry": 150} .
+#  Use filter() to keep only the keys whose values are greater than 50.
+#
+# d = {"apple": 100, "banana": 40, "cherry": 150}
+# result=list(filter(lambda key: d[key]>50 , d))
+# print(result)
+# '''
+#
+# '''
+# Use functools.reduce() with a lambda to find the largest number from a
+# given list Dynamically.
+#
+# from functools import reduce
+# nums=list(map(int,input("Enter numbers:").split()))
+# result=reduce(lambda x,y : x if(x>y) else y , nums)
+# print(result)
+#
+# '''
+#
+# '''
+# Use map() on a string to convert each character into its ASCII value
+#  (using ord()). Print the result list.
+#
+# nums=[65,66,67]
+# result=list(map(lambda nums: ord(chr(nums)) , nums))
+# print(result)
+#
+# nums=['a','b','c']
+# result=list(map(lambda nums: ord(nums) , nums))
+# print(result)
+#
+#
+#
+# Use filter() to remove all vowels from a string and print the final string.
+#
+#
+# s=input()
+# vowels="aeiouAEIOU"
+# result=list(filter(lambda ch: ch not in vowels, s))
+# print(result)
+#
+#
+#
+#
+#  Use reduce() to concatenate a list of characters into a single string.
+# Example input: ['P', 'y', 't', 'h', 'o', 'n'].
+#
+# from functools import reduce
+# chars=['p','y','t','h','o','n']
+# result=reduce(lambda x,y:x+y,chars)
+# print(result)
 
-''' 
- Given a dictionary: d = {"apple": 100, "banana": 40, "cherry": 150} . 
- Use filter() to keep only the keys whose values are greater than 50.
-
-d = {"apple": 100, "banana": 40, "cherry": 150}
-result=list(filter(lambda key: d[key]>50 , d))
-print(result)
-'''
-
-''' 
-Use functools.reduce() with a lambda to find the largest number from a 
-given list Dynamically.
-
-from functools import reduce
-nums=list(map(int,input("Enter numbers:").split()))
-result=reduce(lambda x,y : x if(x>y) else y , nums)
-print(result)
-
-'''
-
-'''
-Use map() on a string to convert each character into its ASCII value
- (using ord()). Print the result list.
-
-nums=[65,66,67]
-result=list(map(lambda nums: ord(chr(nums)) , nums))
-print(result)
-
-nums=['a','b','c']
-result=list(map(lambda nums: ord(nums) , nums))
-print(result)
-'''
-
-'''
-Use filter() to remove all vowels from a string and print the final string.
 
 
-s=input()
-vowels="aeiouAEIOU"
-result=list(filter(lambda ch: ch not in vowels, s))
-print(result)
 
-'''
+# Given a list of integers, use map() with id() to print the memory address
+# of each element. Example: [10, 350, 10, 350, 20] — explain why some addresses repeat.
 
-''' 
- Use reduce() to concatenate a list of characters into a single string.
-Example input: ['P', 'y', 't', 'h', 'o', 'n'].
+# nums = [10, 350, 10, 350, 20]
+# addresses = list(map(lambda x: id(x), nums))
+# print(addresses)
 
-from functools import reduce
-chars=['p','y','t','h','o','n']
-result=reduce(lambda x,y:x+y,chars)
-print(result)
-'''
+# given a list of numbes:
+# [5,10,15,20,25,30]
+# map() to square each number
+# filter to keep only numbers divisible by 5
+# reduce to calculate the sum of remaining numbers]
+# from functools import reduce
+# nums=[5,10,15,20,25,30]
+# result=reduce(lambda x,y: x+y , list(filter(lambda x: x%5==0,  list(map(lambda x: x**2 , nums)))))
+# print(result)
 
-'''
-Given a list of integers, use map() with id() to print the memory address
-of each element. Example: [10, 350, 10, 350, 20] — explain why some addresses repeat.
+# nums=[12,15,7,18,20,21,25]
+# result=list(filter(lambda x: (x%3==0 or x%5==0 )and not (x%3==0 and x%5==0), nums))
+# print(result)
 
-nums = [10, 350, 10, 350, 20]
-addresses = list(map(lambda x: id(x), nums))
-print(addresses)
-'''
-
-''' 
-
-'''
+# from functools import reduce
+# c=[15,20,26,35,27,19,35,34]
+# result=reduce(lambda x,y: x+y ,list(filter(lambda x : x%3==0 ,   list(map(lambda x : (x*9/5)+32 , c)))),0)
+# print(result)
+# from functools import reduce
+# a=[3,5,10,8,1,15,7,6]
+# result=reduce ( lambda x,y,: x+y ,list (filter (lambda x : x>75 ,   list(map(lambda x : 3.14*(x**2) , a)))))
+# print(result)
 
 
 
