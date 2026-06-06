@@ -156,4 +156,31 @@ for i in range(n,0,-1):
         print("*",end="")
     print()
 
+# 1357
+# 2468
+# 1357
+# 2468
+n=4
+for i in range (1,n+1):
+    c,d=1,2
+    for j in range(1,n+1):
+        if i%2==1:
+            print(c,end=" ")
+            c+=2
+        else:
+            print(d,end=" ")
+            d+=2
+    print()
+# 1234
+# 5678
+# 1234
+# 5678
+n=4
+for i in range(1,n+1):
+    c=1 if i%2==1 else 5
+    for j in range(1,n+1):
+        print(c,end=" ")
+        c+=1
+    print()
+
 
