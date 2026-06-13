@@ -82,12 +82,10 @@ class MathOps:
     def add(a,b):
         return a+b
 class AdvancesOps(MathOps):
-    @staticmethod
-    def add(a,b):
-        return a+b
+    pass
 # print(AdvancesOps.add(10,20))
-# obj=AdvancesOps()
-# print(obj.add(30,20))
+# m=AdvancesOps()
+# print(m.add(20,30))
 
 #Create two classes Father and Mother, both defining a method skills(). Create class Child(Father, Mother) and check which skills() runs using MRO.
 class Father:
@@ -104,7 +102,16 @@ class Child(Father,Mother):
 
 #Create an abstract class Shape with an abstract method area(). Create class Rectangle(Shape) that implements the area() method.
 
-
+from abc import ABC , abstractmethod
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+class Rectangle(Shape):
+    def area(self,l,b):
+        return l*b
+# r=Rectangle()
+# print(r.area(10,5))
 
 # Create class Person with a constructor __init__(name). Create class Student(Person) with constructor __init__(name, roll). Use super() to call the parent constructor.
 class Person:
