@@ -224,15 +224,139 @@ def is_circular(n):
 #             break
 #     p+=1
 
-#prime numbers upto n
-n=int(input())
-for i in range(1,n+1):
-    fc=0
-    for j in range (1,i+1):
-        if i%j==0:
-            fc+=1
-    if fc==2:
-        print(i,end=" ")
+#Automorphic number
+# n=int(input())
+# square = n * n
+# power = len(str(n))
+# if square % 10**power == n:
+#     print("Automorphic number")
+# else:
+#     print("Non automorphic number")
+
+# neon number
+# n=int(input())
+# square = n * n
+# temp = square
+# s = 0
+# while square > 0:
+#     ld = square % 10
+#     s += ld
+#     square = square // 10
+# if s == n:
+#     print("Neon ")
+# else:
+#     print("Not neon")
+
+#Duck number
+# n=input()
+# if '0' in n and n[0] !=0:
+#     print("Duck number")
+# else:
+#     print("Not a duck number")
+
+# spy number
+# n=int(input())
+# s=0
+# p=1
+# temp = n
+# while n>0:
+#     ld = n%10
+#     s=s+ld
+#     p=p*ld
+#     n=n//10
+# if s==p:
+#     print("spy number")
+# else:
+#     print("Not a spy number")
+
+#Happy number
+# n=int(input())
+# while n!=1 and n!=4:
+#     s=0
+#     while n>0:
+#         ld =n%10
+#         s=s+ld*ld
+#         n=n//10
+#     n=s
+# if n==1:
+#     print("Happy number")
+# else:
+#     print("Not happy number")
+
+#Strong number
+# n=int(input())
+# temp = n
+# s=0
+# while n>0:
+#     fact = 1
+#     ld = n%10
+#     for i in range(1,ld+1):
+#         fact=fact*i
+#     s=s+fact
+#     n=n//10
+# if s ==temp:
+#     print("Strong number")
+# else:
+#     print("Not a strong number")
+
+#Emrip numbers
+# def is_prime(n):
+#     for i in range(2,n):
+#         if n%i==0:
+#             return False
+#     return True
+# n=int(input())
+# temp = n
+# rev = 0
+# while n>0:
+#     rem = n%10
+#     rev = rev*10+rem
+#     n=n//10
+# if is_prime(rev) and is_prime(temp) and temp !=rev:
+#     print("Emrip number")
+# else:
+#     print("Not a emrip number")
+
+#disarium number
+# n=int(input())
+# temp = n
+# digits = 0
+# t=n
+# while t >0:
+#     digits += 1
+#     t=t//10
+# s=0
+# t=n
+# while t>0:
+#     ld = n%10
+#     s=s+ld**digits
+#     digits-=1
+#     n=n//10
+# if s==temp:
+#     print("Disarium number")
+# else:
+#     print("Not a disarium number")
+
+Armstrong
+Strong
+Neon
+Duck
+Spy
+Automorphic
+Happy
+Emirp
+Disarium
+Fascinating
+Keith
+Smith
+Circular Prime
+Adam
+Tech
+Kaprekar
+Harshad
+Buzz
+Sunny
+Perfect Number
 
 
 

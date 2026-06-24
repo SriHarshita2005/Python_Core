@@ -108,9 +108,10 @@ class SecureFile:
         else:
             self.__log.append("Unauthorised attempt")
             return "Access denied"
-s1=SecureFile("Python","1234")
-print(s1.read("1234"))
-print(s1.read(1111))
+# s1=SecureFile("Python","1234")
+# print(s1.read("1234"))
+# print(s1.read(1111))
+
 # 4.Design an Employee class where:
 # • salary is hidden
 # • outsiders cannot read salary directly
@@ -187,16 +188,16 @@ class Character:
             self.__health = self.__max_health
     def get_health(self):
         return self.__health
-c1 = Character(80, 100)
-print("Current Health:", c1.get_health())
-c1.damage(30)
-print("After Damage:", c1.get_health())
-c1.damage(100)
-print("After Heavy Damage:", c1.get_health())
-c1.heal(50)
-print("After Heal:", c1.get_health())
-c1.heal(100)
-print("After Excess Heal:", c1.get_health())
+# c1 = Character(80, 100)
+# print("Current Health:", c1.get_health())
+# c1.damage(30)
+# print("After Damage:", c1.get_health())
+# c1.damage(100)
+# print("After Heavy Damage:", c1.get_health())
+# c1.heal(50)
+# print("After Heal:", c1.get_health())
+# c1.heal(100)
+# print("After Excess Heal:", c1.get_health())
 
 # 7. Create:
 # • An Engine class with private state like temperature
@@ -237,13 +238,13 @@ class Car:
         return self.__engine.get_temperature()
 
 
-c = Car()
-
-c.start_car()
-print("Temperature:", c.engine_status())
-
-c.cool_engine()
-print("Temperature:", c.engine_status())
+# c = Car()
+#
+# c.start_car()
+# print("Temperature:", c.engine_status())
+#
+# c.cool_engine()
+# print("Temperature:", c.engine_status())
 
 # 8. Create a ShoppingCart class where:
 # • items are stored privately
@@ -267,15 +268,15 @@ class ShoppingCart:
         return self.__items.copy()      # Safe copy
 
 
-cart = ShoppingCart()
-
-cart.add_item("Laptop")
-cart.add_item("Mouse")
-
-items = cart.get_items()
-items.append("Mobile")      # Changes only copied list
-
-print("Cart Items:", cart.get_items())
+# cart = ShoppingCart()
+#
+# cart.add_item("Laptop")
+# cart.add_item("Mouse")
+#
+# items = cart.get_items()
+# items.append("Mobile")      # Changes only copied list
+#
+# print("Cart Items:", cart.get_items())
 
 # 9. Implement a class incorrectly first:
 # • Attendance stored in a list
