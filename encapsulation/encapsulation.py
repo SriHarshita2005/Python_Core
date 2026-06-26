@@ -297,11 +297,11 @@ class Attendance:
         return self.__attendance.copy()
 
 
-a = Attendance()
-
-a.mark_present("Harshita")
-
-print(a.view_attendance())
+# a = Attendance()
+#
+# a.mark_present("Harshita")
+#
+# print(a.view_attendance())
 
 # 10. Create a class using @property and @setter for a private attribute.
 # Then:
@@ -326,14 +326,158 @@ class Student:
             print("Invalid Marks")
 
 
-s = Student(80)
+# s = Student(80)
+#
+# print(s.marks)
+#
+# s.marks = 95
+# print(s.marks)
+#
+# s.marks = 150
 
-print(s.marks)
+#Design a BankAccount class with a private __balance. Create @property balance as a getter. Create a @balance.setter that raises ValueError if the value is negative. Add methods deposit(amount) and withdraw(amount) that update balance through the setter. Test all edge cases.
+class BankAccount:
+    def __init__(self,bal):
+        self.__bal = bal
+    @property
+    def get_bal(self):
+        return self.__bal
+    @get_bal.setter
+    def get_bal(self,nb):
+        if nb <0 :
+            raise ValueError("Balance is negative")
+        self.__bal = nb
+        return self.__bal
+    def deposit(self,amount):
+        if amount > 0:
+            self.__bal += amount
+            return self.__bal
+        else:
+            print("Amount cannot be negative")
+    def withdraw(self,amount):
+        if amount < self.__bal:
+            self.__bal -= amount
+            return self.__bal
+        else:
+            print("Balance becomes negative")
+# b=BankAccount(100)
+# print(b.get_bal)
+# b.deposit(200)
+# print(b.get_bal)
+# b.withdraw(200)
+# print(b.get_bal)
 
-s.marks = 95
-print(s.marks)
+# Create a class Circle with a private __radius. Add @property radius (getter) and @radius.setter that validates the radius is positive. Add a computed @property area and @property circumference. Show that changing radius automatically updates both computed properties.
+class Circle:
+    def __init__(self,radius):
+        self.__radius = radius
+    @property
+    def radius(self):
+        return self.__radius
+    @radius.setter
+    def radius(self,nr):
+        if nr>0:
+            self.__radius=nr
+            return self.__radius
+    @property
+    def get_area(self):
+        return 3.14*self.__radius*self.__radius
+    @property
+    def circumfrence(self):
+        return 2*3.14*self.__radius
+# c=Circle(10)
+# print(c.get_area)
+# print(c.circumfrence)
+# c.radius = 20
+# print(c.get_area)
+# print(c.circumfrence)
 
-s.marks = 150
+# Write a class Config with protected _settings dict and private __secret_key. Demonstrate: (a) public attribute access, (b) protected access with a warning comment, (c) private access via name mangling (and explain why you should NOT do this in real code), (d) a safe public method get_setting(key) as the correct approach.
+class Config:
+    def __init__(self):
+        # Public attribute
+        self.version = "1.0"
+
+        # Protected attribute
+        self._settings = {
+            "theme": "dark",
+            "language": "English"
+        }
+
+        # Private attribute
+        self.__secret_key = "ABC123XYZ"
+
+    # Safe public method
+    def get_setting(self, key):
+        return self._settings.get(key, "Setting not found")
+
+
+# Driver Code
+config = Config()
+
+# (a) Public attribute access
+print("Version:", config.version)
+
+# (b) Protected attribute access
+# Warning: Possible, but should be treated as internal use only.
+print("Settings:", config._settings)
+
+# (c) Private attribute access via name mangling
+# Warning: This bypasses encapsulation and should NOT be done in real code.
+print("Secret Key:", config._Config__secret_key)
+
+# (d) Correct approach: use a public method
+print("Theme:", config.get_setting("theme"))
+print("Language:", config.get_setting("language"))
+
+# Build a Person class using @property for first_name, last_name, and full_name. full_name should be a computed read-only property. Add a @full_name.setter that splits the input string on a space and updates first and last names separately.
+class Person:
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+
+    @property
+    def first_name(self):
+        return self._first_name
+
+    @first_name.setter
+    def first_name(self, value):
+        self._first_name = value
+
+    @property
+    def last_name(self):
+        return self._last_name
+
+    @last_name.setter
+    def last_name(self, value):
+        self._last_name = value
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    @full_name.setter
+    def full_name(self, value):
+        first, last = value.split(" ")
+        self.first_name = first
+        self.last_name = last
+
+
+# Driver Code
+p = Person("Harshita", "Ganapathiraju")
+
+print(p.first_name)
+print(p.last_name)
+print(p.full_name)
+
+p.full_name = "Sai Kumar"
+
+print("\nAfter updating full_name:")
+print(p.first_name)
+print(p.last_name)
+print(p.full_name)
+
+
 
 
 

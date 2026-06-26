@@ -140,3 +140,126 @@ class Student(Person):
 #Multi-level Inheritance Create a class Vehicle with attributes make, model, and year, and a method info().
 # Create a child class Car(Vehicle) that adds a doors attribute and overrides info() to include doors.
 # Create ElectricCar(Car) that adds battery_range and calls super().info() to extend the output. Demonstrate all three levels.
+class Vehicle:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def info(self):
+        return f"Make: {self.make}, Model: {self.model}, Year: {self.year}"
+
+
+class Car(Vehicle):
+    def __init__(self, make, model, year, doors):
+        super().__init__(make, model, year)
+        self.doors = doors
+
+    def info(self):
+        return f"{super().info()}, Doors: {self.doors}"
+
+
+class ElectricCar(Car):
+    def __init__(self, make, model, year, doors, battery_range):
+        super().__init__(make, model, year, doors)
+        self.battery_range = battery_range
+
+    def info(self):
+        return f"{super().info()}, Battery Range: {self.battery_range} km"
+
+
+# Driver Code
+
+# v = Vehicle("Toyota", "Corolla", 2020)
+# print(v.info())
+#
+# c = Car("Honda", "City", 2022, 4)
+# print(c.info())
+#
+# e = ElectricCar("Tesla", "Model 3", 2024, 4, 500)
+# print(e.info())
+
+# Build a multiple inheritance scenario: class Printable with a method print_info(), class Saveable with save().
+# Create class Document(Printable, Saveable) that uses both. Print the MRO and explain the resolution order
+class Printable:
+    def print_info(self):
+        print("Printing document information")
+
+
+class Saveable:
+    def save(self):
+        print("Document saved")
+
+
+class Document(Printable, Saveable):
+    pass
+
+
+# Driver Code
+# doc = Document()
+#
+# doc.print_info()
+# doc.save()
+#
+# # MRO
+# print(Document.mro())
+
+# Diamond Problem + MRO Create the classic diamond problem: A → B, A → C, D(B,C).
+# Give all four classes a method hello() that returns their name. Show which hello() gets called on D().
+# Then remove hello() from B and show how the MRO changes the result.
+class A:
+    def hello(self):
+        return "A"
+
+
+class B(A):
+    def hello(self):
+        return "B"
+
+
+class C(A):
+    def hello(self):
+        return "C"
+
+
+class D(B, C):
+    pass
+
+
+# d = D()
+#
+# print(d.hello())
+# print(D.mro())
+
+# super() Chaining Write a class hierarchy School → Department → Course. Use super() in every __init__ to chain initialisation correctly.
+# Each class adds one attribute. Prove that Manager(super()) in one class correctly delegates through the full chain.
+class School:
+    def __init__(self, school_name):
+        print("School __init__ called")
+        self.school_name = school_name
+
+
+class Department(School):
+    def __init__(self, school_name, dept_name):
+        print("Department __init__ called")
+        super().__init__(school_name)
+        self.dept_name = dept_name
+
+
+class Course(Department):
+    def __init__(self, school_name, dept_name, course_name):
+        print("Course __init__ called")
+        super().__init__(school_name, dept_name)
+        self.course_name = course_name
+
+    def display(self):
+        print(f"School: {self.school_name}")
+        print(f"Department: {self.dept_name}")
+        print(f"Course: {self.course_name}")
+
+
+# Driver Code
+# c = Course("Vignan University", "CSE", "Python")
+#
+# c.display()
+

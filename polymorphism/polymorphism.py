@@ -137,12 +137,12 @@ class Sorter:
         self.strategy = strategy
     def sort(self):
         self.strategy.logic()
-s=Sorter()
-l = [BS(), MS(), QS()]
-
-for i in l:
-    s.change(i)
-    s.sort()
+# s=Sorter()
+# l = [BS(), MS(), QS()]
+#
+# for i in l:
+#     s.change(i)
+#     s.sort()
 
 # . Create:
 # • Base Account → withdraw()
@@ -195,15 +195,15 @@ def draw(shape):
     shape.draw()
 
 
-c = Circle()
-s = Square()
-r = Rectangle()
-car = Car()
-
-draw(c)
-draw(s)
-draw(r)
-draw(car)
+# c = Circle()
+# s = Square()
+# r = Rectangle()
+# car = Car()
+#
+# draw(c)
+# draw(s)
+# draw(r)
+# draw(car)
 
 # Q10.Design a polymorphic system for payment handling(UPI, Card, Cash) — all have a pay() method. Now implement a version that checks types
 # explicitly using isinstance() before calling pay(). Compare both designs and explain why one breaks the spirit of polymorphism
@@ -238,6 +238,122 @@ def process_payment(method, amount):
         print("Invalid Payment Method")
 
 
-process_payment(UPI(), 1000)
-process_payment(Card(), 2000)
-process_payment(Cash(), 500)
+# process_payment(UPI(), 1000)
+# process_payment(Card(), 2000)
+# process_payment(Cash(), 500)
+
+# Method Overriding Build a payment system with a base class Payment(amount) and three subclasses:
+# CreditCard, UPI, and NetBanking. Each overrides a method process() with its own logic.
+# Write a function checkout(payment) that calls process() on any payment object and demonstrate polymorphism.
+class Payment:
+    def __init__(self, amount):
+        self.amount = amount
+
+    def process(self):
+        print(f"Processing payment of ₹{self.amount}")
+
+
+class CreditCard(Payment):
+    def process(self):
+        print(f"Paid ₹{self.amount} using Credit Card")
+
+
+class UPI(Payment):
+    def process(self):
+        print(f"Paid ₹{self.amount} using UPI")
+
+
+class NetBanking(Payment):
+    def process(self):
+        print(f"Paid ₹{self.amount} using Net Banking")
+
+
+def checkout(payment):
+    payment.process()
+
+
+# Driver Code
+# checkout(CreditCard(500))
+# checkout(UPI(500))
+# checkout(NetBanking(500))
+
+# Duck Typing Create three completely unrelated classes: PDFReport, ExcelSheet, and EmailMessage.
+# Each has a method send(). Write a function dispatch(item) that calls send() using duck typing.
+# Prove that no inheritance is needed.
+class PDFReport:
+    def send(self):
+        print("Sending PDF Report")
+
+
+class ExcelSheet:
+    def send(self):
+        print("Sending Excel Sheet")
+
+
+class EmailMessage:
+    def send(self):
+        print("Sending Email Message")
+
+
+def dispatch(item):
+    item.send()
+
+
+# Driver Code
+# dispatch(PDFReport())
+# dispatch(ExcelSheet())
+# dispatch(EmailMessage())
+
+#Write a function total_area(shapes) that takes a list of any shape objects and returns their combined area.
+# Use duck typing — any object with an area() method should work. Test with Circle, Rectangle, Triangle, and a custom class Hexagon.
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius * self.radius
+
+
+class Rectangle:
+    def __init__(self, length, breadth):
+        self.length = length
+        self.breadth = breadth
+
+    def area(self):
+        return self.length * self.breadth
+
+
+class Triangle:
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+
+    def area(self):
+        return 0.5 * self.base * self.height
+
+
+class Hexagon:
+    def __init__(self, side):
+        self.side = side
+
+    def area(self):
+        return (3 * 1.732 / 2) * self.side * self.side
+
+
+def total_area(shapes):
+    total = 0
+    for i in shapes:
+        total += i.area()
+    return total
+
+
+# Driver Code
+# shapes = [
+#     Circle(5),
+#     Rectangle(4, 6),
+#     Triangle(10, 8),
+#     Hexagon(3)
+# ]
+#
+# print("Total Area =", total_area(shapes))
+
